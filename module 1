@@ -1,0 +1,49 @@
+Sub OrdenarPorTitulo()
+    With Worksheets("Planilha1")
+        .Range("A1:G250").Sort key1:=.Range("A2"), order1:=xlAscending, Header:=xlNo
+    End With
+End Sub
+
+Sub OrdenarPorAno()
+    With Worksheets("Planilha1")
+        .Range("A1:G250").Sort key1:=.Range("B2"), order1:=xlDescending, Header:=xlNo
+    End With
+End Sub
+
+Sub OrdenarPorGenero()
+    With Worksheets("Planilha1")
+        .Range("A1:G250").Sort key1:=.Range("C2"), order1:=xlAscending, Header:=xlNo
+    End With
+End Sub
+
+Sub OrdenarPorDiretor()
+    With Worksheets("Planilha1")
+        .Range("A1:G250").Sort key1:=.Range("D2"), order1:=xlAscending, Header:=xlNo
+    End With
+End Sub
+
+Sub OrdenarPorPais()
+    With Worksheets("Planilha1")
+        .Range("A1:G250").Sort key1:=.Range("E2"), order1:=xlAscending, Header:=xlNo
+    End With
+End Sub
+Sub SortearTituloAleatorio()
+    Dim lastRow As Long
+    Dim randomRow As Long
+    Dim selectedTitle As String
+    
+    ' Definir a planilha e encontrar a última linha com dados na coluna A
+    With Worksheets("Planilha1")
+        lastRow = .Cells(.Rows.Count, 1).End(xlUp).Row
+    End With
+    
+    ' Sortear um número aleatório entre 2 e a última linha
+    randomRow = WorksheetFunction.RandBetween(2, lastRow)
+    
+    ' Obter o título sorteado
+    selectedTitle = Worksheets("Planilha1").Cells(randomRow, 1).Value
+    
+    ' Exibir o título sorteado em uma caixa de mensagem
+    MsgBox "Filme sorteado: " & selectedTitle, vbInformation, "Título Aleatório"
+End Sub
+
